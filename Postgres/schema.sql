@@ -31,8 +31,8 @@ CREATE TABLE `product` (
 
 CREATE TABLE `feature` (
   `feature_id` SMALLINT NOT NULL AUTO_INCREMENT,
-  `feature` ENUM('Fabric', 'Buttons') NOT NULL,
-  `value` ENUM('Canvas', 'Brass') NOT NULL,
+  `feature` ENUM('Fabric', 'Buttons', 'Sole', 'Material') NOT NULL,
+  `value` VARCHAR(50) DEFAULT NULL,
 
   PRIMARY KEY (`feature_id`),
 );
