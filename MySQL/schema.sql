@@ -2,7 +2,7 @@ CREATE DATABASE products;
 
 USE products;
 
-DROP TABLE IF EXISTS `category`, `product`, `feature`, `product_features`, `style`, `photo`, `sku`;
+DROP TABLE IF EXISTS `category`, `product`, `related_product`, `feature`, `product_features`, `style`, `photo`, `sku`;
 
 CREATE TABLE `category` (
   `category_id` SMALLINT NOT NULL AUTO_INCREMENT,
@@ -12,7 +12,7 @@ CREATE TABLE `category` (
 );
 
 CREATE TABLE `product` (
-  `product_id` SMALLINT NOT NULL AUTO_INCREMENT,
+  `id` SMALLINT NOT NULL AUTO_INCREMENT,
   `campus` VARCHAR(10) NOT NULL,
   `product_name` VARCHAR(20) NOT NULL,
   `slogan` VARCHAR(120) NOT NULL,
@@ -22,19 +22,31 @@ CREATE TABLE `product` (
   `created_at` DATE DEFAULT CURRENT_DATE,
   `updated_at` DATE DEFAULT CURRENT_DATE,
 
-  PRIMARY KEY (`product_id`),
+  PRIMARY KEY (`id`),
 
   FOREIGN KEY (`category_id`)
-    REFERENCES category (`category_id`)
+    REFERENCES category (`id`)
+    ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE `related_product` (
+  `id` SMALLINT NOT NULL AUTO_INCREMENT,
+  `related_product_id` SMALLINT NOT NULL,
+  `product_id` SMALLINT NOT NULL,
+
+  PRIMARY KEY (`id`),
+
+  FOREIGN KEY (`product_id`)
+    REFERENCES product (`id`)
     ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE `feature` (
-  `feature_id` SMALLINT NOT NULL AUTO_INCREMENT,
+  `id` SMALLINT NOT NULL AUTO_INCREMENT,
   `feature` ENUM('Fabric', 'Buttons', 'Sole', 'Material') NOT NULL,
   `value` VARCHAR(50) DEFAULT NULL,
 
-  PRIMARY KEY (`feature_id`),
+  PRIMARY KEY (`id`),
 );
 
 CREATE TABLE `product_features` (
@@ -46,43 +58,43 @@ CREATE TABLE `product_features` (
 )
 
 CREATE TABLE `style` (
-  `style_id` SMALLINT NOT NULL AUTO_INCREMENT,
+  `id` SMALLINT NOT NULL AUTO_INCREMENT,
   `style_name` VARCHAR(100) NOT NULL,
   `default?` BOOL DEFAULT 0,
   `original_price` DECIMAL(6,2) NOT NULL,
   `sale_price` DECIMAL(6,2) DEFAULT NULL,
   `product_id` SMALLINT NOT NULL,
 
-  PRIMARY KEY (`style_id`),
+  PRIMARY KEY (`id`),
 
   FOREIGN KEY (`product_id`)
-    REFERENCES product (`product_id`)
+    REFERENCES product (`id`)
     ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE `photo` (
-  `photo_id` SMALLINT NOT NULL AUTO_INCREMENT,
+  `id` SMALLINT NOT NULL AUTO_INCREMENT,
   `url` VARCHAR(250) NOT NULL,
   `thumbnail_url` VARCHAR(250) NOT NULL,
   `style_id` SMALLINT NOT NULL,
 
-  PRIMARY KEY (`photo_id`),
+  PRIMARY KEY (`id`),
   INDEX (`style_id`),
 
   FOREIGN KEY (`style_id`)
-    REFERENCES style (`style_id`)
+    REFERENCES style (`id`)
     ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE `sku` (
-  `sku_num` SMALLINT NOT NULL AUTO_INCREMENT,
+  `id` SMALLINT NOT NULL AUTO_INCREMENT,
   `quantity` SMALLINT NOT NULL,
   `size` ENUM('XS', 'S', 'M', 'L', 'XL', 'XXL', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11', '11.5', '12', '12.5') NOT NULL,
   `style_id` SMALLINT NOT NULL,
 
-  PRIMARY KEY(`sku_num`),
+  PRIMARY KEY(`id`),
 
   FOREIGN KEY (`style_id`)
-    REFERENCES style (`style_id`)
+    REFERENCES style (`id`)
     ON UPDATE CASCADE ON DELETE CASCADE
 );
