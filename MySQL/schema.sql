@@ -76,7 +76,7 @@ CREATE TABLE `photo` (
 
 CREATE TABLE `sku` (
   `sku_num` SMALLINT NOT NULL AUTO_INCREMENT,
-  `quantity` TINYINT(7) NOT NULL,
+  `quantity` SMALLINT NOT NULL,
   `size` ENUM('XS', 'S', 'M', 'L', 'XL', 'XXL', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11', '11.5', '12', '12.5') NOT NULL,
   `style_id` SMALLINT NOT NULL,
 
