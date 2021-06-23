@@ -6,8 +6,7 @@ DROP TABLE IF EXISTS `product`, `related_product`, `feature`, `product_features`
 
 CREATE TABLE `product` (
   `id` SMALLINT NOT NULL AUTO_INCREMENT,
-  `campus` VARCHAR(10) NOT NULL,
-  `product_name` VARCHAR(20) NOT NULL,
+  `name` VARCHAR(20) NOT NULL,
   `slogan` VARCHAR(120) NOT NULL,
   `description` VARCHAR(500) NOT NULL,
   `default_price` DECIMAL(6,2) NOT NULL,
@@ -51,7 +50,7 @@ CREATE TABLE `product_features` (
 
 CREATE TABLE `style` (
   `id` SMALLINT NOT NULL AUTO_INCREMENT,
-  `style_name` VARCHAR(100) NOT NULL,
+  `name` VARCHAR(100) NOT NULL,
   `default_style` BOOL DEFAULT 0,
   `original_price` DECIMAL(6,2) NOT NULL,
   `sale_price` DECIMAL(6,2) DEFAULT NULL,
@@ -83,10 +82,9 @@ CREATE TABLE `sku` (
   INDEX (`style_id`, `size`),
 );
 
-ALTER TABLE `related_product` ADD FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE;
-
-ALTER TABLE `style` ADD FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE;
-
-ALTER TABLE `photo` ADD FOREIGN KEY (`style_id`) REFERENCES `style` (`id`) ON DELETE CASCADE;
-
-ALTER TABLE `sku` ADD FOREIGN KEY (`style_id`) REFERENCES `style` (`id`) ON DELETE CASCADE;
+ALTER TABLE `related_product` ADD FOREIGN KEY (current_product_id) REFERENCES `product` (`id`);
+ALTER TABLE `product_features` ADD FOREIGN KEY (feature_id) REFERENCES `feature` (`id`);
+ALTER TABLE `product_features` ADD FOREIGN KEY (product_id) REFERENCES `product` (`id`);
+ALTER TABLE `style` ADD FOREIGN KEY (product_id) REFERENCES `product` (`id`);
+ALTER TABLE `photo` ADD FOREIGN KEY (style_id) REFERENCES `style` (`id`);
+ALTER TABLE `sku` ADD FOREIGN KEY (style_id) REFERENCES `style` (`id`);
