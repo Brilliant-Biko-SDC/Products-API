@@ -92,7 +92,7 @@ CREATE TABLE `sku` (
   `style_id` SMALLINT NOT NULL,
 
   PRIMARY KEY(`id`),
-  INDEX (`style_id`),
+  INDEX (`style_id`, `size`),
 
   FOREIGN KEY (`style_id`)
     REFERENCES style (`id`)
