@@ -27,10 +27,6 @@ CREATE TABLE `related_product` (
 
   PRIMARY KEY (`id`),
   INDEX (`product_id`),
-
-  FOREIGN KEY (`product_id`)
-    REFERENCES product (`id`)
-    ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE `feature` (
@@ -63,10 +59,6 @@ CREATE TABLE `style` (
 
   PRIMARY KEY (`id`),
   INDEX (`product_id`),
-
-  FOREIGN KEY (`product_id`)
-    REFERENCES product (`id`)
-    ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE `photo` (
@@ -77,10 +69,6 @@ CREATE TABLE `photo` (
 
   PRIMARY KEY (`id`),
   INDEX (`style_id`),
-
-  FOREIGN KEY (`style_id`)
-    REFERENCES style (`id`)
-    ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE `sku` (
@@ -93,8 +81,12 @@ CREATE TABLE `sku` (
 
   PRIMARY KEY(`id`),
   INDEX (`style_id`, `size`),
-
-  FOREIGN KEY (`style_id`)
-    REFERENCES style (`id`)
-    ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+ALTER TABLE `related_product` ADD FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE;
+
+ALTER TABLE `style` ADD FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE;
+
+ALTER TABLE `photo` ADD FOREIGN KEY (`style_id`) REFERENCES `style` (`id`) ON DELETE CASCADE;
+
+ALTER TABLE `sku` ADD FOREIGN KEY (`style_id`) REFERENCES `style` (`id`) ON DELETE CASCADE;
