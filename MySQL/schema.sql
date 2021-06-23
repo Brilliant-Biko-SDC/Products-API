@@ -20,7 +20,7 @@ CREATE TABLE `product` (
 CREATE TABLE `related_products` (
   `id` SMALLINT NOT NULL AUTO_INCREMENT,
   `related_product_id` SMALLINT NOT NULL,
-  `product_id` SMALLINT NOT NULL,
+  `current_product_id` SMALLINT NOT NULL,
 
   PRIMARY KEY (`id`),
   INDEX (`product_id`),
