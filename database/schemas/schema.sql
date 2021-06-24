@@ -11,8 +11,8 @@ CREATE TABLE `product` (
   `description` VARCHAR(500) NOT NULL,
   `category` VARCHAR(30) NOT NULL,
   `default_price` DECIMAL(11,2) NOT NULL,
-  `created_at` DATE DEFAULT CURRENT_DATE,
-  `updated_at` DATE DEFAULT CURRENT_DATE,
+  `created_at` DATE DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATE DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 
   PRIMARY KEY (`id`),
 );
@@ -74,50 +74,50 @@ CREATE TABLE `skus` (
 -- ALTER TABLE `photos` ADD FOREIGN KEY (style_id) REFERENCES `styles` (`id`);
 -- ALTER TABLE `skus` ADD FOREIGN KEY (style_id) REFERENCES `styles` (`id`);
 
-LOAD DATA
-  INFILE 'product.csv'
-  INTO TABLE `product`
-  FIELDS TERMINATED BY ','
-  ENCLOSED BY '"'
-  LINES TERMINATED BY '\r\n'
-  IGNORE 1 ROWS;
+-- LOAD DATA
+--   INFILE 'product.csv'
+--   INTO TABLE `product`
+--   FIELDS TERMINATED BY ','
+--   ENCLOSED BY '"'
+--   LINES TERMINATED BY '\r\n'
+--   IGNORE 1 ROWS;
 
-LOAD DATA
-  INFILE 'related.csv'
-  INTO TABLE `related_products`
-  FIELDS TERMINATED BY ','
-  ENCLOSED BY '"'
-  LINES TERMINATED BY '\r\n'
-  IGNORE 1 ROWS;
+-- LOAD DATA
+--   INFILE 'related.csv'
+--   INTO TABLE `related_products`
+--   FIELDS TERMINATED BY ','
+--   ENCLOSED BY '"'
+--   LINES TERMINATED BY '\r\n'
+--   IGNORE 1 ROWS;
 
-LOAD DATA
-  INFILE 'features.csv'
-  INTO TABLE `features`
-  FIELDS TERMINATED BY ','
-  ENCLOSED BY '"'
-  LINES TERMINATED BY '\r\n'
-  IGNORE 1 ROWS;
+-- LOAD DATA
+--   INFILE 'features.csv'
+--   INTO TABLE `features`
+--   FIELDS TERMINATED BY ','
+--   ENCLOSED BY '"'
+--   LINES TERMINATED BY '\r\n'
+--   IGNORE 1 ROWS;
 
-LOAD DATA
-  INFILE 'styles.csv'
-  INTO TABLE `styles`
-  FIELDS TERMINATED BY ','
-  ENCLOSED BY '"'
-  LINES TERMINATED BY '\r\n'
-  IGNORE 1 ROWS;
+-- LOAD DATA
+--   INFILE 'styles.csv'
+--   INTO TABLE `styles`
+--   FIELDS TERMINATED BY ','
+--   ENCLOSED BY '"'
+--   LINES TERMINATED BY '\r\n'
+--   IGNORE 1 ROWS;
 
-LOAD DATA
-  INFILE 'photos.csv'
-  INTO TABLE `photos`
-  FIELDS TERMINATED BY ','
-  ENCLOSED BY '"'
-  LINES TERMINATED BY '\r\n'
-  IGNORE 1 ROWS;
+-- LOAD DATA
+--   INFILE 'photos.csv'
+--   INTO TABLE `photos`
+--   FIELDS TERMINATED BY ','
+--   ENCLOSED BY '"'
+--   LINES TERMINATED BY '\r\n'
+--   IGNORE 1 ROWS;
 
-LOAD DATA
-  INFILE 'skus.csv'
-  INTO TABLE `skus`
-  FIELDS TERMINATED BY ','
-  ENCLOSED BY '"'
-  LINES TERMINATED BY '\r\n'
-  IGNORE 1 ROWS;
+-- LOAD DATA
+--   INFILE 'skus.csv'
+--   INTO TABLE `skus`
+--   FIELDS TERMINATED BY ','
+--   ENCLOSED BY '"'
+--   LINES TERMINATED BY '\r\n'
+--   IGNORE 1 ROWS;
