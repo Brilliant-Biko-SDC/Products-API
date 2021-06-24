@@ -1,0 +1,26 @@
+{
+  "name": "products-api",
+  "version": "1.0.0",
+  "description": "The Products API for Project Catwalk.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Brilliant-Biko-SDC/Products-API.git"
+  },
+  "author": "Elizabeth Phung",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Brilliant-Biko-SDC/Products-API/issues"
+  },
+  "homepage": "https://github.com/Brilliant-Biko-SDC/Products-API#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

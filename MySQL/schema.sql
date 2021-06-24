@@ -73,3 +73,33 @@ CREATE TABLE `skus` (
 -- ALTER TABLE `styles` ADD FOREIGN KEY (product_id) REFERENCES `product` (`id`);
 -- ALTER TABLE `photos` ADD FOREIGN KEY (style_id) REFERENCES `styles` (`id`);
 -- ALTER TABLE `skus` ADD FOREIGN KEY (style_id) REFERENCES `styles` (`id`);
+
+LOAD DATA
+  INFILE 'product.csv'
+  INTO TABLE `product`
+  IGNORE 1 ROWS;
+
+LOAD DATA
+  INFILE 'related.csv'
+  INTO TABLE `related_products`
+  IGNORE 1 ROWS;
+
+LOAD DATA
+  INFILE 'features.csv'
+  INTO TABLE `features`
+  IGNORE 1 ROWS;
+
+LOAD DATA
+  INFILE 'styles.csv'
+  INTO TABLE `styles`
+  IGNORE 1 ROWS;
+
+LOAD DATA
+  INFILE 'photos.csv'
+  INTO TABLE `photos`
+  IGNORE 1 ROWS;
+
+LOAD DATA
+  INFILE 'skus.csv'
+  INTO TABLE `skus`
+  IGNORE 1 ROWS;
