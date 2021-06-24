@@ -1,2 +1,4 @@
 node_modules
+database/data
 package-lock.json
+index.js
