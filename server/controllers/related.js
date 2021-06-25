@@ -2,7 +2,8 @@ const models = require('../models');
 
 module.exports = {
   get: function(req, res) {
-    models.related.get((err, results) => {
+    const productId = req.params.productid;
+    models.related.get(productId, (err, results) => {
       if (err) {
         console.log(err);
         // do something with err
