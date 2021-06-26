@@ -3,13 +3,12 @@ const models = require('../models');
 module.exports = {
   get: function(req, res) {
     const productId = req.params.productid;
-    models.styles.get(productId, (err, results) => {
+    models.styles.get(productId, (err, data) => {
       if (err) {
         console.log(err);
         // do something with err
       }
-
-      res.json(results);
+      res.status(200).send(data);
     });
   }
 };
