@@ -4,8 +4,17 @@
   "description": "The Products API for Project Catwalk.",
   "main": "index.js",
   "scripts": {
-    "test": "test",
+    "test": "jest",
     "start": "nodemon server"
+  },
+  "devDependencies": {
+    "frisby": "^2.1.3",
+    "jest": "^27.0.5",
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
   },
   "repository": {
     "type": "git",
@@ -16,12 +25,5 @@
   "bugs": {
     "url": "https://github.com/Brilliant-Biko-SDC/Products-API/issues"
   },
-  "homepage": "https://github.com/Brilliant-Biko-SDC/Products-API#readme",
-  "devDependencies": {
-    "nodemon": "^2.0.7"
-  },
-  "dependencies": {
-    "express": "^4.17.1",
-    "mysql": "^2.18.1"
-  }
+  "homepage": "https://github.com/Brilliant-Biko-SDC/Products-API#readme"
 }
