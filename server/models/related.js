@@ -22,8 +22,8 @@ module.exports = {
             )
             FROM features f WHERE f.product_id=p.id),
             'photos', (SELECT JSON_OBJECT(
-                'thumbnail_url', photos.thumbnail_url,
-                'url', photos.url
+                'thumbnail_url', JSON_UNQUOTE(photos.thumbnail_url),
+                'url', JSON_UNQUOTE(photos.url)
               )
               FROM styles
               INNER JOIN photos
