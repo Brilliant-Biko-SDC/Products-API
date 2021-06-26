@@ -42,9 +42,18 @@ module.exports = {
       if (err) throw err;
 
       connection.query(qs, (err, results) => {
-        const data = parseData(results);
+        let data;
+        let error;
 
-        cb(err, data);
+        if (err) {
+          throw err;
+        } else if (results.length) {
+          data = parseData(results);
+          cb(null, data);
+        } else {
+          error = 'Requested related products were not available';
+          cb(error);
+        }
 
         connection.release();
       })
