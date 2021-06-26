@@ -39,7 +39,6 @@ module.exports = {
 
       connection.query(qs, (err, results) => {
         const data = parseData(results);
-        console.log(data);
 
         cb(err, data);
 
