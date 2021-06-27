@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "nodemon server"
+    "start": "nodemon server",
+    "k6product": "k6 run k6/http_get_product.js",
+    "k6styles": "k6 run k6/http_get_styles.js",
+    "k6related": "k6 run k6/http_get_related.js"
   },
   "devDependencies": {
     "frisby": "^2.1.3",
