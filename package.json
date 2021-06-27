@@ -7,8 +7,10 @@
     "test": "jest",
     "start": "nodemon server",
     "k6product": "k6 run testing/k6/http_get_product.js",
+    "k6productspike": "k6 run testing/k6/http_get_product_spike.js",
     "k6styles": "k6 run testing/k6/http_get_styles.js",
-    "k6related": "k6 run testing/k6/http_get_related.js"
+    "k6related": "k6 run testing/k6/http_get_related.js",
+    "artilleryproduct": "artillery run testing/artillery/product.yaml"
   },
   "devDependencies": {
     "artillery": "^1.7.4",
