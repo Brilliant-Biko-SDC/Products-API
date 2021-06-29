@@ -63,6 +63,53 @@ CREATE TABLE skus (
   PRIMARY KEY(id)
 );
 
+LOAD DATA
+  INFILE './imports/product.csv'
+  INTO TABLE product
+  FIELDS TERMINATED BY ','
+  ENCLOSED BY '"'
+  LINES TERMINATED BY '\n'
+  IGNORE 1 ROWS;
+
+LOAD DATA
+  INFILE './imports/related.csv'
+  INTO TABLE related
+  FIELDS TERMINATED BY ','
+  ENCLOSED BY '"'
+  LINES TERMINATED BY '\n'
+  IGNORE 1 ROWS;
+
+LOAD DATA
+  INFILE './imports/features.csv'
+  INTO TABLE features
+  FIELDS TERMINATED BY ','
+  ENCLOSED BY '"'
+  LINES TERMINATED BY '\n'
+  IGNORE 1 ROWS;
+
+LOAD DATA
+  INFILE './imports/styles.csv'
+  INTO TABLE styles
+  FIELDS TERMINATED BY ','
+  ENCLOSED BY '"'
+  LINES TERMINATED BY '\n'
+  IGNORE 1 ROWS;
+
+LOAD DATA
+  INFILE './imports/photos.csv'
+  INTO TABLE photos
+  FIELDS TERMINATED BY ','
+  LINES TERMINATED BY '\n'
+  IGNORE 1 ROWS;
+
+LOAD DATA
+  INFILE './imports/skus.csv'
+  INTO TABLE skus
+  FIELDS TERMINATED BY ','
+  ENCLOSED BY '"'
+  LINES TERMINATED BY '\n'
+  IGNORE 1 ROWS;
+
 -- ALTER TABLE related ADD INDEX product_id_index (current_product_id);
 -- ALTER TABLE features ADD INDEX product_id_index (product_id);
 -- ALTER TABLE styles ADD INDEX product_id_index (product_id);
@@ -74,50 +121,3 @@ CREATE TABLE skus (
 -- ALTER TABLE styles ADD FOREIGN KEY (product_id) REFERENCES product (id);
 -- ALTER TABLE photos ADD FOREIGN KEY (style_id) REFERENCES styles (id);
 -- ALTER TABLE skus ADD FOREIGN KEY (style_id) REFERENCES styles (id);
-
--- LOAD DATA
---   INFILE '../sdcdata/product.csv'
---   INTO TABLE product
---   FIELDS TERMINATED BY ','
---   ENCLOSED BY '"'
---   LINES TERMINATED BY '\n'
---   IGNORE 1 ROWS;
-
--- LOAD DATA
---   INFILE '../sdcdata/related.csv'
---   INTO TABLE related
---   FIELDS TERMINATED BY ','
---   ENCLOSED BY '"'
---   LINES TERMINATED BY '\n'
---   IGNORE 1 ROWS;
-
--- LOAD DATA
---   INFILE '../sdcdata/features.csv'
---   INTO TABLE features
---   FIELDS TERMINATED BY ','
---   ENCLOSED BY '"'
---   LINES TERMINATED BY '\n'
---   IGNORE 1 ROWS;
-
--- LOAD DATA
---   INFILE '../sdcdata/styles.csv'
---   INTO TABLE styles
---   FIELDS TERMINATED BY ','
---   ENCLOSED BY '"'
---   LINES TERMINATED BY '\n'
---   IGNORE 1 ROWS;
-
--- LOAD DATA
---   INFILE '../sdcdata/photos.csv'
---   INTO TABLE photos
---   FIELDS TERMINATED BY ','
---   LINES TERMINATED BY '\n'
---   IGNORE 1 ROWS;
-
--- LOAD DATA
---   INFILE '../sdcdata/skus.csv'
---   INTO TABLE skus
---   FIELDS TERMINATED BY ','
---   ENCLOSED BY '"'
---   LINES TERMINATED BY '\n'
---   IGNORE 1 ROWS;
