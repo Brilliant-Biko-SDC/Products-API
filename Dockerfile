@@ -1,10 +1,10 @@
 FROM node:14.17-alpine
 
-RUN mkdir -p /src/app
+RUN mkdir -p /usr/src/app
 
-WORKDIR /src/app
+WORKDIR /usr/src/app
 
-COPY . /src/app
+COPY . /usr/src/app
 
 RUN npm install
 
