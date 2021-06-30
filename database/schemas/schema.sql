@@ -64,7 +64,7 @@ CREATE TABLE skus (
 );
 
 LOAD DATA
-  INFILE './imports/product.csv'
+  INFILE './product.csv'
   INTO TABLE product
   FIELDS TERMINATED BY ','
   ENCLOSED BY '"'
@@ -72,7 +72,7 @@ LOAD DATA
   IGNORE 1 ROWS;
 
 LOAD DATA
-  INFILE './imports/related.csv'
+  INFILE './related.csv'
   INTO TABLE related
   FIELDS TERMINATED BY ','
   ENCLOSED BY '"'
@@ -80,7 +80,7 @@ LOAD DATA
   IGNORE 1 ROWS;
 
 LOAD DATA
-  INFILE './imports/features.csv'
+  INFILE './features.csv'
   INTO TABLE features
   FIELDS TERMINATED BY ','
   ENCLOSED BY '"'
@@ -88,7 +88,7 @@ LOAD DATA
   IGNORE 1 ROWS;
 
 LOAD DATA
-  INFILE './imports/styles.csv'
+  INFILE './styles.csv'
   INTO TABLE styles
   FIELDS TERMINATED BY ','
   ENCLOSED BY '"'
@@ -96,28 +96,28 @@ LOAD DATA
   IGNORE 1 ROWS;
 
 LOAD DATA
-  INFILE './imports/photos.csv'
+  INFILE './photos.csv'
   INTO TABLE photos
   FIELDS TERMINATED BY ','
   LINES TERMINATED BY '\n'
   IGNORE 1 ROWS;
 
 LOAD DATA
-  INFILE './imports/skus.csv'
+  INFILE './skus.csv'
   INTO TABLE skus
   FIELDS TERMINATED BY ','
   ENCLOSED BY '"'
   LINES TERMINATED BY '\n'
   IGNORE 1 ROWS;
 
--- ALTER TABLE related ADD INDEX product_id_index (current_product_id);
--- ALTER TABLE features ADD INDEX product_id_index (product_id);
--- ALTER TABLE styles ADD INDEX product_id_index (product_id);
--- ALTER TABLE photos ADD INDEX style_id_index (style_id);
--- ALTER TABLE skus ADD INDEX style_id_index (style_id);
+ALTER TABLE related ADD INDEX product_id_index (current_product_id);
+ALTER TABLE features ADD INDEX product_id_index (product_id);
+ALTER TABLE styles ADD INDEX product_id_index (product_id);
+ALTER TABLE photos ADD INDEX style_id_index (style_id);
+ALTER TABLE skus ADD INDEX style_id_index (style_id);
 
--- ALTER TABLE related ADD FOREIGN KEY (current_product_id) REFERENCES product (id);
--- ALTER TABLE features ADD FOREIGN KEY (product_id) REFERENCES product (id);
--- ALTER TABLE styles ADD FOREIGN KEY (product_id) REFERENCES product (id);
--- ALTER TABLE photos ADD FOREIGN KEY (style_id) REFERENCES styles (id);
--- ALTER TABLE skus ADD FOREIGN KEY (style_id) REFERENCES styles (id);
+ALTER TABLE related ADD FOREIGN KEY (current_product_id) REFERENCES product (id);
+ALTER TABLE features ADD FOREIGN KEY (product_id) REFERENCES product (id);
+ALTER TABLE styles ADD FOREIGN KEY (product_id) REFERENCES product (id);
+ALTER TABLE photos ADD FOREIGN KEY (style_id) REFERENCES styles (id);
+ALTER TABLE skus ADD FOREIGN KEY (style_id) REFERENCES styles (id);
